@@ -1,0 +1,19 @@
+name: Git Actions Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Display Git Information
+      run: |
+        echo "Current Branch: $GITHUB_REF"
+        echo "Last Commit Message: $(git log -1 --pretty=%B)"

@@ -1,19 +1,25 @@
-name: Git Actions Workflow
+name: Hello world workflow
 
-on:
+on: 
   push:
+    branches:
+      - main
+  pull-request:
     branches:
       - main
 
 jobs:
-  build:
+  hello:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      - name: hello world
+        run: echo "Hello world"
+        shell: bash
 
-    - name: Display Git Information
-      run: |
-        echo "Current Branch: $GITHUB_REF"
-        echo "Last Commit Message: $(git log -1 --pretty=%B)"
+  goodbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: goodbye world
+        run: echo "goodbye world"
+        shell: bash
